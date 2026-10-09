@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="RTL and LTR arrows">
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="#111827"/>
+  <path d="M91 34H43l14-14-10-10-31 31 31 31 10-10-14-14h48z" fill="#f9fafb"/>
+  <path d="M37 94h48L71 108l10 10 31-31-31-31-10 10 14 14H37z" fill="#60a5fa"/>
+</svg>
