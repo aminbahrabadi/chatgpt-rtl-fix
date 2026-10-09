@@ -1,4 +1,4 @@
-/* ChatGPT RTL Fix v3.2 */
+/* ChatGPT RTL Fix v3.3.0 */
 
 /* Message roots are context markers only. Never make the entire assistant DOM
  * RTL: that can flip code/table toolbars and other logical CSS UI controls. */
@@ -122,7 +122,7 @@ pre {
   unicode-bidi: isolate !important;
 }
 
-/* But ChatGPT also uses "Plain text" code blocks for prose/diagrams. v3.2
+/* ChatGPT also uses "Plain text" code blocks for prose/diagrams.
  * classifies only the scrollport, leaving the header/buttons untouched. */
 [data-chatgpt-bidi-code-body="rtl"] {
   direction: rtl !important;
