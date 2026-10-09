@@ -1,0 +1,154 @@
+/* ChatGPT RTL Fix v3.2 */
+
+/* Message roots are context markers only. Never make the entire assistant DOM
+ * RTL: that can flip code/table toolbars and other logical CSS UI controls. */
+
+[data-chatgpt-bidi-user="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+[data-chatgpt-bidi-user="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+[data-chatgpt-bidi-block="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+[data-chatgpt-bidi-block="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+[data-chatgpt-bidi-list="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+[data-chatgpt-bidi-list="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* A mixed list keeps one marker side, while opposite-language items get their
+ * own bidi paragraph treatment without moving the bullet. */
+[data-chatgpt-bidi-list-item="plaintext"] {
+  unicode-bidi: plaintext !important;
+}
+[data-chatgpt-bidi-list-item="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: isolate !important;
+}
+[data-chatgpt-bidi-list-item="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+
+[data-chatgpt-bidi-table="rtl"] { direction: rtl !important; }
+[data-chatgpt-bidi-table="ltr"] { direction: ltr !important; }
+th[data-chatgpt-bidi-block="rtl"], td[data-chatgpt-bidi-block="rtl"] { text-align: right !important; }
+th[data-chatgpt-bidi-block="ltr"], td[data-chatgpt-bidi-block="ltr"] { text-align: left !important; }
+
+/* Keep table widget chrome in the app's LTR UI coordinate system. The actual
+ * table below gets its own semantic direction. */
+[data-markdown-table="true"] { direction: ltr !important; }
+[data-markdown-table="true"] table[data-chatgpt-bidi-table="rtl"] { direction: rtl !important; }
+[data-markdown-table="true"] table[data-chatgpt-bidi-table="ltr"] { direction: ltr !important; }
+[data-markdown-table="true"] [data-block-actions="true"] { direction: ltr !important; }
+
+/* Writing blocks are independent documents embedded in a message. */
+[data-chatgpt-bidi-surface-content="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+[data-chatgpt-bidi-surface-content="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: isolate !important;
+}
+[data-chatgpt-bidi-surface-content="ltr"] :where(
+  p,h1,h2,h3,h4,h5,h6,blockquote,ul,ol,li,dl,dt,dd,table,thead,tbody,tfoot,tr,th,td,figcaption,summary
+) {
+  direction: ltr !important;
+  text-align: left !important;
+}
+[data-chatgpt-bidi-surface-content="rtl"] :where(
+  p,h1,h2,h3,h4,h5,h6,blockquote,ul,ol,li,dl,dt,dd,figcaption,summary
+) {
+  direction: rtl !important;
+  text-align: right !important;
+}
+[data-chatgpt-bidi-surface-content] [data-chatgpt-bidi-block="rtl"] {
+  direction: rtl !important; text-align: right !important;
+}
+[data-chatgpt-bidi-surface-content] [data-chatgpt-bidi-block="ltr"] {
+  direction: ltr !important; text-align: left !important;
+}
+[data-chatgpt-bidi-surface-content] [data-chatgpt-bidi-list="rtl"] {
+  direction: rtl !important; text-align: right !important;
+}
+[data-chatgpt-bidi-surface-content] [data-chatgpt-bidi-list="ltr"] {
+  direction: ltr !important; text-align: left !important;
+}
+
+/* URLs/citations stay isolated LTR so slashes and punctuation cannot jump. */
+[data-chatgpt-bidi-inline="ltr"] {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+[data-chatgpt-bidi-inline="rtl"] {
+  direction: rtl !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Current ChatGPT inline-code representation plus legacy inline <code>. */
+[data-markdown-copy="inline-code"],
+[data-chatgpt-bidi-block] :where(p,h1,h2,h3,h4,h5,h6,blockquote,li,td,th) code,
+[data-chatgpt-bidi-surface] :where(p,h1,h2,h3,h4,h5,h6,blockquote,li,td,th) code,
+kbd, samp {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Code-block chrome and real programming code remain LTR. */
+[data-markdown-copy="code-block"],
+[data-markdown-copy="code-block"] :where(.cm-editor,.cm-content),
+pre {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+
+/* But ChatGPT also uses "Plain text" code blocks for prose/diagrams. v3.2
+ * classifies only the scrollport, leaving the header/buttons untouched. */
+[data-chatgpt-bidi-code-body="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: isolate !important;
+}
+[data-chatgpt-bidi-code-body="ltr"] {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+[data-chatgpt-bidi-code-body] code {
+  direction: inherit !important;
+  text-align: inherit !important;
+  unicode-bidi: inherit !important;
+}
+
+/* Math is always LTR. */
+:where(math,.katex) {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+
+[data-chatgpt-bidi-composer="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  unicode-bidi: isolate !important;
+}
