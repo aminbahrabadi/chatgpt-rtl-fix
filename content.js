@@ -2,7 +2,7 @@
   "use strict";
 
   /*
-   * ChatGPT RTL Fix v3.2
+   * ChatGPT RTL Fix v3.3.0
    *
    * Direction is owned by the smallest semantic text surface. Message roots are
    * context only; they are never styled directly, so embedded UI controls do
