@@ -521,18 +521,18 @@
 
       if (node.matches(CODE_BLOCK_SELECTOR)) queueCodeBlock(node);
       node.querySelectorAll?.(CODE_BLOCK_SELECTOR).forEach((block) => {
-        if (!closestIndepentSurface(block)) queueCodeBlock(block);
+        if (!closestIndependentSurface(block)) queueCodeBlock(block);
       });
     }
 
     const block = closest(node, BLOCK_SELECTOR);
-    if (block && !closestIndepentSurface(block)) queueBlock(block);
+    if (block && !closestIndependentSurface(block)) queueBlock(block);
     const list = closest(node, LIST_SELECTOR);
-    if (list && !closestIndepentSurface(list)) queueList(list);
+    if (list && !closestIndependentSurface(list)) queueList(list);
     const table = closest(node, TABLE_SELECTOR);
-    if (table && !closestIndepentSurface(table)) queueTable(table);
+    if (table && !closestIndependentSurface(table)) queueTable(table);
     const inline = closest(node, INLINE_SELECTOR);
-    if (inline && !closestIndepentSurface(inline)) queueInline(inline);
+    if (inline && !closestIndependentSurface(inline)) queueInline(inline);
     const codeBlock = closest(node, CODE_BLOCK_SELECTOR);
     if (codeBlock && !closestIndependentSurface(codeBlock)) queueCodeBlock(codeBlock);
 
