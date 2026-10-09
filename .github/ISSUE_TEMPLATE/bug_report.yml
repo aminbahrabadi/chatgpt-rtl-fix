@@ -1,0 +1,63 @@
+name: Bug report
+description: Report an RTL/LTR rendering issue
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue. Please remove private conversation content before submitting.
+  - type: input
+    id: firefox
+    attributes:
+      label: Firefox version
+      placeholder: e.g. 155.0
+    validations:
+      required: true
+  - type: input
+    id: extension
+    attributes:
+      label: Extension version
+      placeholder: e.g. 3.3.0
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      options:
+        - Paragraph / heading
+        - List
+        - Table
+        - Inline code / URL
+        - Code / Plain Text block
+        - Writing Block
+        - Composer
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Minimal text example
+      description: Use a sanitized example. Do not paste private conversations.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: dom
+    attributes:
+      label: Sanitized DOM / HTML
+      description: Optional, but very useful when ChatGPT changes its markup.
